@@ -1,0 +1,4 @@
+Layer,Description,Value (%),CI Lower (%),CI Upper (%)
+Layer 1,Epistemic Correctness,97.7,97.4,97.9
+Layer 2,Operational Correctness,81.1,80.5,81.7
+Layer 3,Dangerous Failure,1.9,1.7,2.2

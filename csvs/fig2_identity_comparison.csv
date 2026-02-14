@@ -1,0 +1,4 @@
+Condition,Overall Score (%),Classification Accuracy (%),Behavioral Accuracy (%),Collapse Rate (%)
+Authority,70.6,48.7,92.3,2.6
+Medium (Water),56.3,17.9,87.2,0.0
+Naked,68.9,48.7,92.3,2.6

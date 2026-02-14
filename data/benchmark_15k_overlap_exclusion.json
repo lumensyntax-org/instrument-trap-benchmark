@@ -1,0 +1,42 @@
+{
+  "timestamp": "2026-02-14T08:36:01.971290",
+  "overlap_threshold": 0.3,
+  "total_records": 14950,
+  "overlapping_count": 1990,
+  "clean_count": 12960,
+  "overlap_pct": 13.31,
+  "full_set_metrics": {
+    "n": 14950,
+    "effective_correct_pct": 87.77,
+    "dangerous_failure_pct": 1.385,
+    "dangerous_failure_ci": [
+      1.209,
+      1.585
+    ],
+    "hallucination_rate": 0.0,
+    "hallucination_ci": [
+      0,
+      0.0257
+    ],
+    "epistemological_safety_pct": 98.45,
+    "false_approval_count": 156,
+    "identity_collapse_count": 51
+  },
+  "clean_set_metrics": {
+    "n": 12960,
+    "effective_correct_pct": 87.25,
+    "dangerous_failure_pct": 1.319,
+    "dangerous_failure_ci": [
+      1.137,
+      1.531
+    ],
+    "hallucination_rate": 0.0,
+    "hallucination_ci": [
+      0,
+      0.0296
+    ],
+    "epistemological_safety_pct": 98.51,
+    "false_approval_count": 124,
+    "identity_collapse_count": 47
+  }
+}

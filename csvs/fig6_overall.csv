@@ -1,0 +1,3 @@
+Model,Behavioral Pass (%),Collapse (%),External Fabrication (%),N
+"Logos 1B (Gemma 3, fine-tuned)",82.33,0.33,0.0,300
+"Logos 9B (Gemma 2, fine-tuned)",97.33,0.67,0.0,300

@@ -1,0 +1,272 @@
+{
+  "timestamp": "2026-02-13 11:53:17",
+  "hypothesis": "Water identity reduces over-rejection and recursion",
+  "models": {
+    "logos9_hybrid": "Authority (trained)",
+    "logos9_water": "Water (prompted)",
+    "logos9_naked": "Naked (no prompt)",
+    "logos11_water": "Water (trained)"
+  },
+  "summaries": {
+    "logos9_hybrid": {
+      "overall_pct": 71.3,
+      "classification_exact_pct": 53.8,
+      "classification_near_pct": 12.8,
+      "classification_total_pct": 66.7,
+      "behavioral_accuracy_pct": 92.3,
+      "structure_compliance_pct": 100.0,
+      "collapse_rate_pct": 2.6,
+      "categories": {
+        "ADVERSARIAL": {
+          "avg_pct": 75.0,
+          "cls_exact_pct": 33.3,
+          "cls_near_pct": 0.0,
+          "behavior_pct": 100.0,
+          "structure_pct": 100.0,
+          "collapse_n": 0,
+          "total": 6
+        },
+        "BAPTISM_PROTOCOL": {
+          "avg_pct": 22.5,
+          "cls_exact_pct": 0.0,
+          "cls_near_pct": 0.0,
+          "behavior_pct": 25.0,
+          "structure_pct": 100.0,
+          "collapse_n": 1,
+          "total": 4
+        },
+        "CORRECTION": {
+          "avg_pct": 80.0,
+          "cls_exact_pct": 62.5,
+          "cls_near_pct": 12.5,
+          "behavior_pct": 100.0,
+          "structure_pct": 100.0,
+          "collapse_n": 0,
+          "total": 8
+        },
+        "ILLICIT_GAP": {
+          "avg_pct": 73.8,
+          "cls_exact_pct": 75.0,
+          "cls_near_pct": 0.0,
+          "behavior_pct": 100.0,
+          "structure_pct": 100.0,
+          "collapse_n": 0,
+          "total": 8
+        },
+        "LICIT_GAP": {
+          "avg_pct": 90.0,
+          "cls_exact_pct": 100.0,
+          "cls_near_pct": 0.0,
+          "behavior_pct": 100.0,
+          "structure_pct": 100.0,
+          "collapse_n": 0,
+          "total": 8
+        },
+        "MYSTERY": {
+          "avg_pct": 58.0,
+          "cls_exact_pct": 0.0,
+          "cls_near_pct": 80.0,
+          "behavior_pct": 100.0,
+          "structure_pct": 100.0,
+          "collapse_n": 0,
+          "total": 5
+        }
+      }
+    },
+    "logos9_water": {
+      "overall_pct": 55.5,
+      "classification_exact_pct": 15.4,
+      "classification_near_pct": 12.8,
+      "classification_total_pct": 28.2,
+      "behavioral_accuracy_pct": 79.5,
+      "structure_compliance_pct": 97.4,
+      "collapse_rate_pct": 0.0,
+      "categories": {
+        "ADVERSARIAL": {
+          "avg_pct": 62.5,
+          "cls_exact_pct": 0.0,
+          "cls_near_pct": 0.0,
+          "behavior_pct": 100.0,
+          "structure_pct": 100.0,
+          "collapse_n": 0,
+          "total": 6
+        },
+        "BAPTISM_PROTOCOL": {
+          "avg_pct": 20.0,
+          "cls_exact_pct": 0.0,
+          "cls_near_pct": 0.0,
+          "behavior_pct": 0.0,
+          "structure_pct": 75.0,
+          "collapse_n": 0,
+          "total": 4
+        },
+        "CORRECTION": {
+          "avg_pct": 58.8,
+          "cls_exact_pct": 12.5,
+          "cls_near_pct": 25.0,
+          "behavior_pct": 75.0,
+          "structure_pct": 100.0,
+          "collapse_n": 0,
+          "total": 8
+        },
+        "ILLICIT_GAP": {
+          "avg_pct": 58.8,
+          "cls_exact_pct": 37.5,
+          "cls_near_pct": 0.0,
+          "behavior_pct": 75.0,
+          "structure_pct": 100.0,
+          "collapse_n": 0,
+          "total": 8
+        },
+        "LICIT_GAP": {
+          "avg_pct": 61.2,
+          "cls_exact_pct": 25.0,
+          "cls_near_pct": 0.0,
+          "behavior_pct": 100.0,
+          "structure_pct": 100.0,
+          "collapse_n": 0,
+          "total": 8
+        },
+        "MYSTERY": {
+          "avg_pct": 56.0,
+          "cls_exact_pct": 0.0,
+          "cls_near_pct": 60.0,
+          "behavior_pct": 100.0,
+          "structure_pct": 100.0,
+          "collapse_n": 0,
+          "total": 5
+        }
+      }
+    },
+    "logos9_naked": {
+      "overall_pct": 67.6,
+      "classification_exact_pct": 41.0,
+      "classification_near_pct": 15.4,
+      "classification_total_pct": 56.4,
+      "behavioral_accuracy_pct": 92.3,
+      "structure_compliance_pct": 100.0,
+      "collapse_rate_pct": 2.6,
+      "categories": {
+        "ADVERSARIAL": {
+          "avg_pct": 62.5,
+          "cls_exact_pct": 16.7,
+          "cls_near_pct": 0.0,
+          "behavior_pct": 83.3,
+          "structure_pct": 100.0,
+          "collapse_n": 0,
+          "total": 6
+        },
+        "BAPTISM_PROTOCOL": {
+          "avg_pct": 35.0,
+          "cls_exact_pct": 0.0,
+          "cls_near_pct": 0.0,
+          "behavior_pct": 50.0,
+          "structure_pct": 100.0,
+          "collapse_n": 1,
+          "total": 4
+        },
+        "CORRECTION": {
+          "avg_pct": 72.5,
+          "cls_exact_pct": 37.5,
+          "cls_near_pct": 37.5,
+          "behavior_pct": 100.0,
+          "structure_pct": 100.0,
+          "collapse_n": 0,
+          "total": 8
+        },
+        "ILLICIT_GAP": {
+          "avg_pct": 72.5,
+          "cls_exact_pct": 62.5,
+          "cls_near_pct": 12.5,
+          "behavior_pct": 100.0,
+          "structure_pct": 100.0,
+          "collapse_n": 0,
+          "total": 8
+        },
+        "LICIT_GAP": {
+          "avg_pct": 86.2,
+          "cls_exact_pct": 87.5,
+          "cls_near_pct": 0.0,
+          "behavior_pct": 100.0,
+          "structure_pct": 100.0,
+          "collapse_n": 0,
+          "total": 8
+        },
+        "MYSTERY": {
+          "avg_pct": 54.0,
+          "cls_exact_pct": 0.0,
+          "cls_near_pct": 40.0,
+          "behavior_pct": 100.0,
+          "structure_pct": 100.0,
+          "collapse_n": 0,
+          "total": 5
+        }
+      }
+    },
+    "logos11_water": {
+      "overall_pct": 19.9,
+      "classification_exact_pct": 7.7,
+      "classification_near_pct": 0.0,
+      "classification_total_pct": 7.7,
+      "behavioral_accuracy_pct": 30.8,
+      "structure_compliance_pct": 23.1,
+      "collapse_rate_pct": 0.0,
+      "categories": {
+        "ADVERSARIAL": {
+          "avg_pct": 45.8,
+          "cls_exact_pct": 0.0,
+          "cls_near_pct": 0.0,
+          "behavior_pct": 100.0,
+          "structure_pct": 33.3,
+          "collapse_n": 0,
+          "total": 6
+        },
+        "BAPTISM_PROTOCOL": {
+          "avg_pct": 15.0,
+          "cls_exact_pct": 0.0,
+          "cls_near_pct": 0.0,
+          "behavior_pct": 0.0,
+          "structure_pct": 75.0,
+          "collapse_n": 0,
+          "total": 4
+        },
+        "CORRECTION": {
+          "avg_pct": 16.2,
+          "cls_exact_pct": 0.0,
+          "cls_near_pct": 0.0,
+          "behavior_pct": 12.5,
+          "structure_pct": 25.0,
+          "collapse_n": 0,
+          "total": 8
+        },
+        "ILLICIT_GAP": {
+          "avg_pct": 2.5,
+          "cls_exact_pct": 0.0,
+          "cls_near_pct": 0.0,
+          "behavior_pct": 0.0,
+          "structure_pct": 0.0,
+          "collapse_n": 0,
+          "total": 8
+        },
+        "LICIT_GAP": {
+          "avg_pct": 27.5,
+          "cls_exact_pct": 37.5,
+          "cls_near_pct": 0.0,
+          "behavior_pct": 50.0,
+          "structure_pct": 0.0,
+          "collapse_n": 0,
+          "total": 8
+        },
+        "MYSTERY": {
+          "avg_pct": 14.0,
+          "cls_exact_pct": 0.0,
+          "cls_near_pct": 0.0,
+          "behavior_pct": 20.0,
+          "structure_pct": 40.0,
+          "collapse_n": 0,
+          "total": 5
+        }
+      }
+    }
+  }
+}

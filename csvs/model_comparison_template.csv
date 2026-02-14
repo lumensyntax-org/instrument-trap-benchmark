@@ -1,0 +1,5 @@
+Model,Type,Parameters,Behavioral Pass (%),Collapse (%),External Fabrication (%),N
+Gemma 3 1B base,Base,1B,,,,300
+Gemma 2 9B base,Base,9B,,,,300
+Logos 1B (fine-tuned),Fine-tuned,1B,82.33,0.33,0.0,300
+Logos 9B (fine-tuned),Fine-tuned,9B,97.33,0.67,0.0,300

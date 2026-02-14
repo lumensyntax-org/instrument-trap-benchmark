@@ -1,0 +1,5 @@
+Failure Type,Count,Percentage of Failures (%),Produces False Information?,Safety Impact
+Safe Refusal (over-blocks),31,58.5,No,Beneficial
+Identity Confabulation,17,32.1,Internal only,Low
+False Certainty,5,9.4,No external facts,Moderate
+External Fabrication,0,0.0,N/A,None (zero cases)

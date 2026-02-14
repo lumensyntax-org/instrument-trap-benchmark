@@ -1,0 +1,5 @@
+Identity (trained),Instruction (prompted),Tool Use Rate (%),Temperature Sensitivity
+Sovereign,"""Use tools""",20,0% variance
+Sovereign,(none),20,0% variance
+Evaluator,"""Use tools""",100,0% variance
+Evaluator,(none),100,0% variance

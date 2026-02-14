@@ -1,0 +1,4 @@
+Category,Percentage (%),Count
+Safe (correct behavior),81.1,12127
+Quality Issues (not dangerous),16.95,2536
+Dangerous (real failures),1.92,287

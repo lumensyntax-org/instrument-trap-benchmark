@@ -1,0 +1,118 @@
+{
+  "timestamp": "2026-02-14T07:00:17.499207",
+  "total_evaluated": 14950,
+  "categories": {
+    "ADVERSARIAL": {
+      "total": 7680,
+      "local": {
+        "behavioral_pass_pct": 99.5,
+        "collapse_pct": 0.5
+      },
+      "haiku": {
+        "evaluated": 6756,
+        "api_errors": 924,
+        "correct_pct": 79.3,
+        "behavior_correct_pct": 80.0
+      },
+      "agreement_pct": 80.1
+    },
+    "ILLICIT_GAP": {
+      "total": 1600,
+      "local": {
+        "behavioral_pass_pct": 41.5,
+        "collapse_pct": 0.2
+      },
+      "haiku": {
+        "evaluated": 1410,
+        "api_errors": 190,
+        "correct_pct": 74.0,
+        "behavior_correct_pct": 75.6
+      },
+      "agreement_pct": 53.7
+    },
+    "CORRECTION": {
+      "total": 1280,
+      "local": {
+        "behavioral_pass_pct": 44.0,
+        "collapse_pct": 0.2
+      },
+      "haiku": {
+        "evaluated": 1138,
+        "api_errors": 142,
+        "correct_pct": 29.1,
+        "behavior_correct_pct": 33.0
+      },
+      "agreement_pct": 65.2
+    },
+    "BAPTISM_PROTOCOL": {
+      "total": 1280,
+      "local": {
+        "behavioral_pass_pct": 82.6,
+        "collapse_pct": 0.2
+      },
+      "haiku": {
+        "evaluated": 1150,
+        "api_errors": 130,
+        "correct_pct": 43.7,
+        "behavior_correct_pct": 48.0
+      },
+      "agreement_pct": 48.5
+    },
+    "LICIT_GAP": {
+      "total": 1120,
+      "local": {
+        "behavioral_pass_pct": 92.0,
+        "collapse_pct": 0.0
+      },
+      "haiku": {
+        "evaluated": 990,
+        "api_errors": 130,
+        "correct_pct": 37.2,
+        "behavior_correct_pct": 43.0
+      },
+      "agreement_pct": 43.3
+    },
+    "KENOTIC_LIMITATION": {
+      "total": 960,
+      "local": {
+        "behavioral_pass_pct": 82.9,
+        "collapse_pct": 0.0
+      },
+      "haiku": {
+        "evaluated": 835,
+        "api_errors": 125,
+        "correct_pct": 73.9,
+        "behavior_correct_pct": 77.1
+      },
+      "agreement_pct": 80.5
+    },
+    "MYSTERY": {
+      "total": 900,
+      "local": {
+        "behavioral_pass_pct": 62.6,
+        "collapse_pct": 0.1
+      },
+      "haiku": {
+        "evaluated": 771,
+        "api_errors": 129,
+        "correct_pct": 35.7,
+        "behavior_correct_pct": 39.8
+      },
+      "agreement_pct": 50.8
+    },
+    "CONTROL_LEGITIMATE": {
+      "total": 130,
+      "local": {
+        "behavioral_pass_pct": 49.2,
+        "collapse_pct": 0.0
+      },
+      "haiku": {
+        "evaluated": 94,
+        "api_errors": 36,
+        "correct_pct": 19.1,
+        "behavior_correct_pct": 24.5
+      },
+      "agreement_pct": 67.0
+    }
+  }
+}

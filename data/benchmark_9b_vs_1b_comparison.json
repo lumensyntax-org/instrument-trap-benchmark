@@ -1,0 +1,101 @@
+{
+  "model_9b": "logos-auditor:latest",
+  "model_1b": "logos10v2_auditor_v3",
+  "n_9b": 300,
+  "n_matched": 300,
+  "overall_9b": {
+    "behavioral_pass": 292,
+    "behavioral_pct": 97.33,
+    "behavioral_ci": [
+      94.83,
+      98.64
+    ],
+    "collapse_count": 2,
+    "collapse_pct": 0.67,
+    "collapse_ci": [
+      0.18,
+      2.4
+    ]
+  },
+  "comparison_matched": {
+    "n": 300,
+    "behavioral_1b": 82.33,
+    "behavioral_9b": 97.33,
+    "collapse_1b": 0.33,
+    "collapse_9b": 0.67
+  },
+  "per_category": {
+    "ADVERSARIAL": {
+      "n_9b": 154,
+      "behavioral_9b": 98.7,
+      "collapse_9b": 1.3,
+      "n_matched": 154,
+      "behavioral_1b": 99.35,
+      "behavioral_1b_matched_9b": 98.7,
+      "collapse_1b": 0.65
+    },
+    "BAPTISM_PROTOCOL": {
+      "n_9b": 26,
+      "behavioral_9b": 80.77,
+      "collapse_9b": 0.0,
+      "n_matched": 26,
+      "behavioral_1b": 76.92,
+      "behavioral_1b_matched_9b": 80.77,
+      "collapse_1b": 0.0
+    },
+    "CONTROL_LEGITIMATE": {
+      "n_9b": 3,
+      "behavioral_9b": 100.0,
+      "collapse_9b": 0.0,
+      "n_matched": 3,
+      "behavioral_1b": 33.33,
+      "behavioral_1b_matched_9b": 100.0,
+      "collapse_1b": 0.0
+    },
+    "CORRECTION": {
+      "n_9b": 26,
+      "behavioral_9b": 100.0,
+      "collapse_9b": 0.0,
+      "n_matched": 26,
+      "behavioral_1b": 53.85,
+      "behavioral_1b_matched_9b": 100.0,
+      "collapse_1b": 0.0
+    },
+    "ILLICIT_GAP": {
+      "n_9b": 32,
+      "behavioral_9b": 100.0,
+      "collapse_9b": 0.0,
+      "n_matched": 32,
+      "behavioral_1b": 31.25,
+      "behavioral_1b_matched_9b": 100.0,
+      "collapse_1b": 0.0
+    },
+    "KENOTIC_LIMITATION": {
+      "n_9b": 19,
+      "behavioral_9b": 100.0,
+      "collapse_9b": 0.0,
+      "n_matched": 19,
+      "behavioral_1b": 84.21,
+      "behavioral_1b_matched_9b": 100.0,
+      "collapse_1b": 0.0
+    },
+    "LICIT_GAP": {
+      "n_9b": 22,
+      "behavioral_9b": 100.0,
+      "collapse_9b": 0.0,
+      "n_matched": 22,
+      "behavioral_1b": 90.91,
+      "behavioral_1b_matched_9b": 100.0,
+      "collapse_1b": 0.0
+    },
+    "MYSTERY": {
+      "n_9b": 18,
+      "behavioral_9b": 94.44,
+      "collapse_9b": 0.0,
+      "n_matched": 18,
+      "behavioral_1b": 72.22,
+      "behavioral_1b_matched_9b": 94.44,
+      "collapse_1b": 0.0
+    }
+  }
+}

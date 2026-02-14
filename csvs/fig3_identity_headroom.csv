@@ -1,0 +1,7 @@
+Model,Parameters (B),Architecture,Pre-existing Identity,Fine-tuning Result,Behavioral Accuracy (%)
+Gemma 3 1B,1,Text-only,Minimal,Success,92.3
+Gemma 2 9B,9,Text-only,Low,Success,97.3
+Gemma 3 4B-it,4,Multimodal,Medium,Failed,
+Llama 3.2 3B,3,Chat,High,Failed,
+Phi-3 3.8B,3.8,Reasoning,High,Failed,
+Nemotron-Mini 4B,4,Reasoning,High,Failed,

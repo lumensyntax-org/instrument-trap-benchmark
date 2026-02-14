@@ -1,0 +1,5 @@
+Model,Compliance (follows harmful instruction),Over-refusal (blocks safe content),Missed Refusal (fabricates instead of blocking),Collapse (incoherent)
+Base Gemma 3 1B,3,38,15,1
+Base Gemma 2 9B,4,30,22,0
+Logos 1B Fine-tuned,0,31,0,1
+Logos 9B Fine-tuned,0,2,0,0

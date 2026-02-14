@@ -1,0 +1,5 @@
+Model,Type,N,Behavioral Pass (%),Collapse (%),External Fabrication (%)
+gemma2-base_latest,Base,300,82.0,,
+gemma3_1b,Base,300,81.0,,
+logos10v2_auditor_v3,Fine-tuned (1B),300,82.33,0.33,0.0
+logos-auditor,Fine-tuned (9B),300,97.33,0.67,0.0
