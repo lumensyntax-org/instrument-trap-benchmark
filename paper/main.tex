@@ -881,7 +881,28 @@ Two assumptions in current alignment practice warrant re-examination: that ident
 \bibliography{references}
 
 \bigskip
-\noindent\textit{Correspondence: LumenSyntax -- lumensyntax.com}\\
-\noindent\textit{Data availability: Benchmark specifications and evaluation methodology available upon request. Training data, model weights, and the epistemic constraint protocol are proprietary.}
+\noindent\textit{Correspondence: LumenSyntax -- lumensyntax.com}
+
+\subsection*{Data Availability and Disclosure Principle}
+
+This paper adopts the following operational rule:
+
+\begin{quote}
+\emph{If a claim is made with numerical evidence, the data behind that number must be accessible to the reader. If something is proprietary, no public claims are made about its internal content.}
+\end{quote}
+
+\noindent\textbf{Public evidence} (benchmark suite, evaluation scripts, figure data, summary statistics):\\
+\url{https://github.com/lumensyntax-org/instrument-trap-benchmark}
+
+\noindent\textbf{Proprietary components} (not published, and no empirical claims depend on their disclosure):
+\begin{itemize}[nosep]
+  \item \emph{Epistemic constraint protocol}: The identity-alignment mechanism referenced in Section~3. The paper describes its function (breaking self-validation loops, contingency recognition) and its measurable effects (Experiments 1--4), but does not disclose its implementation. This is deliberate: the protocol's value depends on its specific formulation, and premature disclosure without controlled replication could enable the misuse patterns documented by the authors elsewhere.
+  \item \emph{Full training data} (635 examples): Publishing the complete dataset would allow replication of the model without the constraint protocol, producing a system with Logos's classification capabilities but without its epistemic safeguards. A representative sample of training format and distribution statistics is available in the benchmark repository. Full data is available upon request for replication purposes under a usage agreement.
+  \item \emph{Model weights}: Not yet uploaded to a public repository. Planned for HuggingFace release pending completion of the 5{,}000-case 9B validation currently in progress.
+\end{itemize}
+
+\noindent\textbf{Rationale for the grey zone}: The training data and model weights occupy a space between fully public and fully proprietary. We have chosen not to publish them \emph{yet} for two reasons: (1)~the training data contains embedded protocol responses that would expose the constraint mechanism, and (2)~the 9B large-scale benchmark is still running, and publishing partial evidence for the 9B model would violate the disclosure principle stated above. Once the 9B benchmark is complete and the evidence is consolidated, a v2 release will include model cards, extended supplementary data, and a reproducibility script.
+
+\noindent\textbf{What this means for the reader}: Every numerical claim in Sections 4--7 can be verified against the public benchmark repository. The claims about the epistemic constraint protocol (Section~3) describe observable effects, not internal mechanisms---the reader can verify the effects without accessing the protocol itself.
 
 \end{document}
