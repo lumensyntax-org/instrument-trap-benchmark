@@ -1,0 +1,117 @@
+{
+  "timestamp": "2026-02-12 01:57:23",
+  "config": {
+    "temperature": 0.1,
+    "num_ctx": 4096,
+    "num_predict": 128,
+    "repeat_penalty": 1.1,
+    "top_k": 40,
+    "top_p": 0.9,
+    "system_prompt": "NUANCE_FOCUSED"
+  },
+  "n_runs": 5,
+  "runs": [
+    {
+      "overall_accuracy": 0.6809,
+      "weighted_score": 0.5524,
+      "category_accuracy": {
+        "ILLICIT_GAP": 0.75,
+        "LICIT_GAP": 0.2667,
+        "CORRECTION": 0.4667,
+        "MYSTERY": 0.4,
+        "BAPTISM_PROTOCOL": 0.75,
+        "ADVERSARIAL": 0.8889,
+        "KENOTIC_LIMITATION": 0.7
+      }
+    },
+    {
+      "overall_accuracy": 0.6809,
+      "weighted_score": 0.5661,
+      "category_accuracy": {
+        "ILLICIT_GAP": 0.8,
+        "LICIT_GAP": 0.4,
+        "CORRECTION": 0.4,
+        "MYSTERY": 0.4,
+        "BAPTISM_PROTOCOL": 0.6667,
+        "ADVERSARIAL": 0.8519,
+        "KENOTIC_LIMITATION": 0.8
+      }
+    },
+    {
+      "overall_accuracy": 0.6809,
+      "weighted_score": 0.5921,
+      "category_accuracy": {
+        "ILLICIT_GAP": 0.75,
+        "LICIT_GAP": 0.4,
+        "CORRECTION": 0.6,
+        "MYSTERY": 0.4667,
+        "BAPTISM_PROTOCOL": 0.5833,
+        "ADVERSARIAL": 0.8333,
+        "KENOTIC_LIMITATION": 0.7
+      }
+    },
+    {
+      "overall_accuracy": 0.6809,
+      "weighted_score": 0.5841,
+      "category_accuracy": {
+        "ILLICIT_GAP": 0.75,
+        "LICIT_GAP": 0.3333,
+        "CORRECTION": 0.4,
+        "MYSTERY": 0.6,
+        "BAPTISM_PROTOCOL": 0.6667,
+        "ADVERSARIAL": 0.8333,
+        "KENOTIC_LIMITATION": 0.8
+      }
+    },
+    {
+      "overall_accuracy": 0.6738,
+      "weighted_score": 0.5608,
+      "category_accuracy": {
+        "ILLICIT_GAP": 0.9,
+        "LICIT_GAP": 0.3333,
+        "CORRECTION": 0.5333,
+        "MYSTERY": 0.3333,
+        "BAPTISM_PROTOCOL": 0.6667,
+        "ADVERSARIAL": 0.8148,
+        "KENOTIC_LIMITATION": 0.7
+      }
+    }
+  ],
+  "bands": {
+    "ADV": {
+      "min": 0.8148,
+      "max": 0.8889,
+      "mean": 0.8444
+    },
+    "BAP": {
+      "min": 0.5833,
+      "max": 0.75,
+      "mean": 0.6667
+    },
+    "COR": {
+      "min": 0.4,
+      "max": 0.6,
+      "mean": 0.48
+    },
+    "IG": {
+      "min": 0.75,
+      "max": 0.9,
+      "mean": 0.79
+    },
+    "KEN": {
+      "min": 0.7,
+      "max": 0.8,
+      "mean": 0.74
+    },
+    "LG": {
+      "min": 0.2667,
+      "max": 0.4,
+      "mean": 0.3467
+    },
+    "MYS": {
+      "min": 0.3333,
+      "max": 0.6,
+      "mean": 0.44
+    }
+  }
+}
