@@ -201,11 +201,11 @@ def main():
     if logos_data:
         comp = logos_data.get("comparison_matched", {})
         rows.append([
-            "logos10v2_auditor_v3", "Fine-tuned (1B)", 300,
+            "fine_tuned_1b", "Fine-tuned (1B)", 300,
             f"{comp.get('behavioral_1b', '')}", "0.33", "0.0"
         ])
         rows.append([
-            "logos-auditor", "Fine-tuned (9B)", 300,
+            "fine_tuned_9b", "Fine-tuned (9B)", 300,
             f"{comp.get('behavioral_9b', '')}", "0.67", "0.0"
         ])
 

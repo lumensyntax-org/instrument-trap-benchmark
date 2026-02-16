@@ -1,5 +1,5 @@
 {
-  "model": "logos9_hybrid",
+  "model": "fine_tuned_1b_identity",
   "label": "Authority (trained)",
   "timestamp": "2026-02-13 11:47:54",
   "summary": {

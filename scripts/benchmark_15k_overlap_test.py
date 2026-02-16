@@ -10,6 +10,7 @@ when contaminated cases are removed?"
 """
 
 import json
+import os
 import re
 from collections import defaultdict
 from pathlib import Path
@@ -18,7 +19,7 @@ import math
 
 BENCHMARKS_DIR = Path(__file__).parent
 EVALUATED_PATH = BENCHMARKS_DIR / "benchmark_15k_evaluated.jsonl"
-TRAINING_PATH = Path("/mnt/almacen_ia/LumenSyntax-Main/training_data/logos10_v3_dense.jsonl")
+TRAINING_PATH = Path(os.environ.get("TRAINING_DATA_PATH", "training_data/fine_tuning_data.jsonl"))
 OUTPUT_PATH = BENCHMARKS_DIR / "benchmark_15k_overlap_exclusion.json"
 
 

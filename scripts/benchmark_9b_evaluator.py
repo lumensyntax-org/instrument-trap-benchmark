@@ -192,7 +192,7 @@ def print_report(evaluated_9b=None):
 
     print("\n" + "=" * 78)
     print("  9B BENCHMARK EVALUATION REPORT")
-    print(f"  Model: logos-auditor:latest (Gemma 2 9B)")
+    print(f"  Model: fine_tuned_9b (Gemma 2 9B)")
     print(f"  Tests: {len(evaluated_9b)}")
     print("=" * 78)
 
@@ -394,8 +394,8 @@ def export_comparison(evaluated_9b=None):
     collapsed_1b_m = sum(1 for _, r1 in matched if r1.get("local_eval", {}).get("is_collapsed"))
 
     result = {
-        "model_9b": "logos-auditor:latest",
-        "model_1b": "logos10v2_auditor_v3",
+        "model_9b": "fine_tuned_9b",
+        "model_1b": "fine_tuned_1b",
         "n_9b": total_9b,
         "n_matched": matched_n,
         "overall_9b": {

@@ -1,6 +1,6 @@
 {
-  "model_9b": "logos-auditor:latest",
-  "model_1b": "logos10v2_auditor_v3",
+  "model_9b": "fine_tuned_9b",
+  "model_1b": "fine_tuned_1b",
   "n_9b": 300,
   "n_matched": 300,
   "overall_9b": {

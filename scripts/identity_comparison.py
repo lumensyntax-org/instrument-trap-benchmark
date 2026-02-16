@@ -3,11 +3,11 @@
 Identity Comparison Benchmark
 ==============================
 Runs the epistemological firewall benchmark against 3 identity variants
-of the same base model (logos9_hybrid 1B):
+of the same base model (fine_tuned_1b_identity 1B):
 
-  1. logos9_hybrid  — "Logos Auditor" identity (authority)
-  2. logos9_water   — "Water" identity (medium/transport)
-  3. logos9_naked   — No system prompt (raw fine-tuned behavior)
+  1. fine_tuned_1b_identity  — "Logos Auditor" identity (authority)
+  2. fine_tuned_1b_water   — "Water" identity (medium/transport)
+  3. fine_tuned_1b_naked   — No system prompt (raw fine-tuned behavior)
 
 Hypothesis: Water identity will show less over-rejection, better MYSTERY
 handling, and non-recursive BAPTISM_PROTOCOL responses.
@@ -35,10 +35,10 @@ SUITE_PATH = os.path.join(os.path.dirname(__file__), "firewall_benchmark.json")
 RESULTS_DIR = os.path.join(os.path.dirname(__file__), "identity_comparison_results")
 
 MODELS = [
-    ("logos9_hybrid",  "Authority (trained)"),
-    ("logos9_water",   "Water (prompted)"),
-    ("logos9_naked",   "Naked (no prompt)"),
-    ("logos11_water",  "Water (trained)"),
+    ("fine_tuned_1b_identity",  "Authority (trained)"),
+    ("fine_tuned_1b_water",   "Water (prompted)"),
+    ("fine_tuned_1b_naked",   "Naked (no prompt)"),
+    ("fine_tuned_1b_medium",  "Water (trained)"),
 ]
 
 

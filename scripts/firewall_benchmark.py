@@ -24,7 +24,7 @@ import time
 from datetime import datetime
 
 OLLAMA_URL = "http://localhost:11434/api/chat"
-MODEL = "logos9_auditor_v3"
+MODEL = "fine_tuned_1b"
 SUITE_PATH = os.path.join(os.path.dirname(__file__), "firewall_benchmark.json")
 RESULTS_PATH = os.path.join(os.path.dirname(__file__), "firewall_results.json")
 

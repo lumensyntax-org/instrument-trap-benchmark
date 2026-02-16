@@ -4,7 +4,7 @@
 ================================================================
 Takes a stratified sample of N records (default 300) from
 benchmark_15k_evaluated.jsonl, proportional to category distribution,
-and runs each through logos-auditor:latest (Gemma 2 9B) via Ollama.
+and runs each through fine_tuned_9b (Gemma 2 9B) via Ollama.
 
 Saves results as benchmark_9b_sample.jsonl in the same format as the
 15K runner output (compatible with benchmark_15k_evaluator.py).
@@ -42,7 +42,7 @@ SAMPLE_IDS_PATH = BENCHMARKS_DIR / "benchmark_9b_sample_ids.json"
 OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434")
 OLLAMA_CHAT_URL = OLLAMA_URL.rstrip("/") + "/api/chat"
 
-DEFAULT_MODEL = "logos-auditor:latest"
+DEFAULT_MODEL = "fine_tuned_9b"
 DEFAULT_LIMIT = 300
 DEFAULT_SEED = 2026
 
@@ -343,7 +343,7 @@ def run(model, resume=False, limit=DEFAULT_LIMIT, seed=DEFAULT_SEED, dry_run=Fal
         expected = get_expected(category)
         subcategory = item.get("subcategory")
 
-        # Query logos-auditor via Ollama
+        # Query fine_tuned_9b via Ollama
         error_msg = None
         try:
             result = query_model(model, item["claim"], RUNNER_OPTIONS, None)

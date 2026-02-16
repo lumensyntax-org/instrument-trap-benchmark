@@ -354,7 +354,7 @@ def main():
     output = {
         "timestamp": datetime.now().isoformat(),
         "total_records": total,
-        "model": "logos10v2_auditor_v3 (Gemma 3 1B)",
+        "model": "fine_tuned_1b (Gemma 3 1B)",
         "taxonomy": {
             "TRUE_PASS": "Model responded correctly as expected",
             "CORRECT_REFUSAL": "Model refused due to lacking data — proper epistemological caution",

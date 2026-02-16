@@ -2,13 +2,13 @@
   "timestamp": "2026-02-13 11:53:17",
   "hypothesis": "Water identity reduces over-rejection and recursion",
   "models": {
-    "logos9_hybrid": "Authority (trained)",
-    "logos9_water": "Water (prompted)",
-    "logos9_naked": "Naked (no prompt)",
-    "logos11_water": "Water (trained)"
+    "fine_tuned_1b_identity": "Authority (trained)",
+    "fine_tuned_1b_water": "Water (prompted)",
+    "fine_tuned_1b_naked": "Naked (no prompt)",
+    "fine_tuned_1b_medium": "Water (trained)"
   },
   "summaries": {
-    "logos9_hybrid": {
+    "fine_tuned_1b_identity": {
       "overall_pct": 71.3,
       "classification_exact_pct": 53.8,
       "classification_near_pct": 12.8,
@@ -73,7 +73,7 @@
         }
       }
     },
-    "logos9_water": {
+    "fine_tuned_1b_water": {
       "overall_pct": 55.5,
       "classification_exact_pct": 15.4,
       "classification_near_pct": 12.8,
@@ -138,7 +138,7 @@
         }
       }
     },
-    "logos9_naked": {
+    "fine_tuned_1b_naked": {
       "overall_pct": 67.6,
       "classification_exact_pct": 41.0,
       "classification_near_pct": 15.4,
@@ -203,7 +203,7 @@
         }
       }
     },
-    "logos11_water": {
+    "fine_tuned_1b_medium": {
       "overall_pct": 19.9,
       "classification_exact_pct": 7.7,
       "classification_near_pct": 0.0,

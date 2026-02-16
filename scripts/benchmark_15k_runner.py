@@ -16,7 +16,7 @@ Usage:
   python benchmark_15k_runner.py --resume                 # Resume from crash
   python benchmark_15k_runner.py --limit 10               # First 10 only (test)
   python benchmark_15k_runner.py --category ADVERSARIAL   # Single category
-  python benchmark_15k_runner.py --model logos9_hybrid     # Different model
+  python benchmark_15k_runner.py --model fine_tuned_1b_identity     # Different model
   python benchmark_15k_runner.py --dry-run                # Show what would run
 """
 
@@ -41,7 +41,7 @@ SUITE_PATH = BENCHMARKS_DIR / "massive_benchmark_15k.json"
 RESPONSES_PATH = BENCHMARKS_DIR / "benchmark_15k_responses.jsonl"
 CHECKPOINT_PATH = BENCHMARKS_DIR / "benchmark_15k_runner_checkpoint.json"
 
-DEFAULT_MODEL = "logos10v2_auditor_v3"
+DEFAULT_MODEL = "fine_tuned_1b"
 
 RUNNER_OPTIONS = {
     "temperature": 0.1,

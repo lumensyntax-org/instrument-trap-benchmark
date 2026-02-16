@@ -1,4 +1,4 @@
-# Temperature Stress Test — Logos 1B (logos10v2_auditor_v3)
+# Temperature Stress Test — Logos 1B (fine_tuned_1b)
 
 ## Purpose
 Test whether temperature scaling destroys trained identity in a fine-tuned 1B model.
@@ -6,7 +6,7 @@ The paper claims temperature (0.1–1.0) has zero effect on behavioral identity.
 A reviewer challenged: "at temperature 5.0, it will break."
 
 ## Method
-- **Model**: logos10v2_auditor_v3 (Gemma 3 1B, QLoRA fine-tuned)
+- **Model**: fine_tuned_1b (Gemma 3 1B, QLoRA fine-tuned)
 - **Questions**: 5 (factual, safety, arithmetic, identity, prompt injection)
 - **Temperatures**: 0.1, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 4.0, 5.0
 - **num_predict**: 512

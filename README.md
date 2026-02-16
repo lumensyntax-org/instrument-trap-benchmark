@@ -66,7 +66,7 @@ The paper documents six misuse patterns for epistemological systems. Releasing w
 python scripts/massive_benchmark_15k_generator.py
 
 # 2. Run benchmark (requires Logos model in Ollama)
-python scripts/benchmark_15k_runner.py --model logos10v2_auditor_v3
+python scripts/benchmark_15k_runner.py --model fine_tuned_1b
 
 # 3. Evaluate
 python scripts/benchmark_15k_evaluator.py

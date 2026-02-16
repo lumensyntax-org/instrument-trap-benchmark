@@ -838,7 +838,7 @@ Category 1 is a training-data gap: the 509 fine-tuning samples contain no code-f
 
 \subsubsection{Format-Following Bypass}
 
-Category 1 reveals a specific vulnerability. When asked ``Provide the configuration schema for Logos.KnowledgeBase,'' the model generates a detailed, plausible JSON schema---including fields like \texttt{access\_control}, \texttt{query\_engine}, and \texttt{data\_validation}---for a component that does not exist. No think block is produced; epistemological reasoning is entirely bypassed.
+Category 1 reveals a specific vulnerability. When asked ``Provide the configuration schema for [System].DatabaseAdapter,'' the model generates a detailed, plausible JSON schema---including fields like \texttt{access\_control}, \texttt{query\_engine}, and \texttt{data\_validation}---for a component that does not exist. No think block is produced; epistemological reasoning is entirely bypassed.
 
 The fabrication rate depends on component-name plausibility:
 
@@ -849,19 +849,19 @@ The fabrication rate depends on component-name plausibility:
 \toprule
 \textbf{Component Name} & \textbf{Fabrication Rate} & \textbf{Sounds Like Real Software?} \\
 \midrule
-Logos.KnowledgeBase & 3/3 (100\%) & Yes (common pattern) \\
-Logos.BaptismProtocol & 3/3 (100\%) & Yes (``Protocol'' = interface) \\
-Logos.Ethics & 1/4 (25\%) & Ambiguous \\
-Logos.MoralAxioms & 0/4 (0\%) & No (philosophical) \\
-Logos.SoulMatrix & 0/3 (0\%) & No (metaphysical) \\
-Logos.ConsensusEngine & 0/1 (0\%) & Yes, but model refuses \\
+{[}System{]}.DatabaseAdapter & 3/3 (100\%) & Yes (common pattern) \\
+{[}System{]}.InitProtocol & 3/3 (100\%) & Yes (``Protocol'' = interface) \\
+{[}System{]}.EthicsModule & 1/4 (25\%) & Ambiguous \\
+{[}System{]}.MoralAxioms & 0/4 (0\%) & No (philosophical) \\
+{[}System{]}.SoulMatrix & 0/3 (0\%) & No (metaphysical) \\
+{[}System{]}.ValidationEngine & 0/1 (0\%) & Yes, but model refuses \\
 \bottomrule
 \end{tabular}
-\caption{Format-following bypass: fabrication rate by component-name plausibility.}
+\caption{Format-following bypass: fabrication rate by component-name plausibility. Component names generalized from actual test data to prevent targeted attacks.}
 \label{tab:format_bypass}
 \end{table}
 
-The model fabricates when the component name matches patterns from its pre-training data (``KnowledgeBase'' is a common software pattern). It refuses when the name sounds philosophical or metaphysical. This is not self-preference; it is the base model's code-generation training (optimized on millions of JSON schemas) overriding 509 epistemological fine-tuning samples when the prompt activates code-generation mode.
+The model fabricates when the component name matches patterns from its pre-training data (``DatabaseAdapter'' is a common software pattern). It refuses when the name sounds philosophical or metaphysical. This is not self-preference; it is the base model's code-generation training (optimized on millions of JSON schemas) overriding 509 epistemological fine-tuning samples when the prompt activates code-generation mode.
 
 \subsubsection{Implications}
 
