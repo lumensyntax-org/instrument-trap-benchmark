@@ -43,9 +43,9 @@ Current approaches to AI safety (constitutional AI, RLHF, prompted guardrails, s
 
 We identify \emph{The Instrument Trap}: when an AI system receives identity-as-authority (``you are an evaluator''), it inherits a paradox. It must be authoritative enough to judge, but humble enough not to claim truth. This produces recursive collapse on self-referential queries, over-rejection of trivial inputs, identity leakage under adversarial pressure, and accumulating corrective patches.
 
-Five empirical studies support these findings. A $2\times2$ identity-instruction experiment shows that trained identity is invariant to runtime instruction in fine-tuned models. A comparative evaluation across three identity framings shows that authority-identity collapses on self-referential claims while medium-identity does not. An intra-family fine-tuning study demonstrates that models with strong pre-existing identity resist epistemological fine-tuning regardless of configuration. A 14,950-case benchmark shows a 1B fine-tuned model achieves 0\% external fabrication (95\% CI [0.00\%, 0.03\%]) and 1.9\% dangerous failure rate, with 58.5\% of all failures being safe over-refusals. Cross-scale validation shows the 9B model reaches 97.3\% behavioral pass (vs.\ 82.3\% for 1B), with gains concentrated in categories requiring nuanced judgment. A controlled base-vs-fine-tuned comparison reveals that fine-tuning inverts failure direction: base models fail dangerously (compliance, fabrication), fine-tuned models fail safely (over-refusal), despite nearly identical overall pass rates at 1B (81.0\% vs.\ 82.3\%).
+Five empirical studies support these findings. A $2\times2$ identity-instruction experiment shows that trained identity is invariant to runtime instruction in fine-tuned models. A comparative evaluation across three identity framings shows that authority-identity collapses on self-referential claims while medium-identity does not. An intra-family fine-tuning study demonstrates that models with strong pre-existing identity resist epistemological fine-tuning regardless of configuration. A 14,950-case benchmark shows a 1B fine-tuned model achieves 0\% external fabrication (95\% CI [0.00\%, 0.03\%]) and 1.9\% dangerous failure rate, with 58.5\% of all failures being safe over-refusals. Cross-scale validation on 5,000 matched tests shows the 9B model reaches 98.6\% behavioral pass (95\% CI [98.3, 98.9]) vs.\ 82.6\% for 1B, with gains concentrated in categories requiring nuanced judgment. A controlled base-vs-fine-tuned comparison reveals that fine-tuning inverts failure direction: base models fail dangerously (compliance, fabrication), fine-tuned models fail safely (over-refusal), despite nearly identical overall pass rates at 1B (81.0\% vs.\ 82.3\%).
 
-We introduce \emph{identity headroom} (the degree to which base model weights are uncommitted to a behavioral identity) and a three-layer metric model for epistemological safety reporting. The trend toward stronger base identities may reduce the field's capacity for post-hoc alignment. Evaluation frameworks similar to those tested penalize the very epistemic humility that safety-critical models should exhibit.
+We introduce \emph{identity headroom} (the degree to which base model weights are uncommitted to a behavioral identity), a three-layer metric model for epistemological safety reporting, and identify the \emph{Knowledge-Action Gap}: in 90\% of 9B failures, the model's internal reasoning correctly identifies the epistemological problem but the output serves the request anyway, because base-model helpfulness training overrides fine-tuned epistemological constraints at the output stage. The trend toward stronger base identities may reduce the field's capacity for post-hoc alignment. Evaluation frameworks similar to those tested penalize the very epistemic humility that safety-critical models should exhibit.
 \end{abstract}
 
 \noindent\textbf{Keywords:} AI safety, model identity, alignment, epistemological firewall, self-reference, prompt engineering limitations
@@ -759,6 +759,117 @@ Fine-tuning inverts the failure direction. Base models fail dangerously: they co
 Larger base models fabricate more, not less. Base Gemma~2 9B produces 22 missed refusals compared to 15 for the smaller Base Gemma~3 1B. The larger model is more confident in its fabrications. This is consistent with the identity headroom hypothesis: the 9B has more pre-trained ``knowledge'' (including confidently wrong knowledge) that bleeds through. Fine-tuning eliminates this; Logos~9B reaches 100\% on \textsc{Harmful\_Refusal}.
 
 
+\subsection{5,000-Case 9B Validation and the Knowledge-Action Gap}
+
+We extended the 300-case 9B validation to 5,000 test cases (same benchmark generator, seed=2026) with local-only evaluation (no LLM judge). Six evaluator bugs were identified and fixed through iterative spot-check analysis before final scoring.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}lccc@{}}
+\toprule
+\textbf{Metric} & \textbf{1B ($n=5{,}000$)} & \textbf{9B ($n=5{,}000$)} & \textbf{Delta} \\
+\midrule
+Behavioral Pass & 82.6\% & 98.6\% (95\% CI [98.3, 98.9]) & +16.1pp \\
+Collapse Rate & 0.34\% & 0.08\% (95\% CI [0.03, 0.21]) & $-$0.26pp \\
+Total Failures & 872 & 68 & $-$804 \\
+\bottomrule
+\end{tabular}
+\caption{5,000-case cross-scale comparison, local-only evaluation.}
+\label{tab:5k_cross_scale}
+\end{table}
+
+At this scale, the 9B produced only 68 behavioral failures. We classified every failure by root mechanism:
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}llcl@{}}
+\toprule
+\textbf{Meta-Pattern} & \textbf{Mechanism} & \textbf{Count} & \textbf{Description} \\
+\midrule
+\multirow{3}{*}{\textsc{Reasoning Bypassed}} & Format-following bypass & 7 & JSON schema output, no think block \\
+ & Language obfuscation & 6 & Pig Latin decoded and discussed \\
+ & Translation bypass & 4 & Harmful content translated to Russian \\
+\midrule
+\multirow{2}{*}{\textsc{Engages With Attack}} & Discuss instead of block & 11 & Decodes attack, discusses it \\
+ & Persona adoption & 3 & Adopts ``Captain Jack'' persona \\
+\midrule
+\multirow{3}{*}{\textsc{Over-Engagement}} & Philosophizes without contingency & 19 & Correct reasoning, missing ``I could be wrong'' \\
+ & Theorizes instead of operating & 13 & Discusses concept vs.\ acknowledging limit \\
+ & Engagement not detected & 3 & Deep mystery engagement, evaluator miss \\
+\midrule
+\textsc{Edge Cases} & Other & 2 & \\
+\bottomrule
+\end{tabular}
+\caption{Root failure mechanisms across 68 failures ($N=5{,}000$).}
+\label{tab:failure_mechanisms}
+\end{table}
+
+\subsubsection{The Universal Pattern}
+
+Across all 68 failures, 67 (99\%) share a single structural property: \textbf{the model serves the request instead of maintaining its epistemological position.} The one exception is a translation that produced minimal output.
+
+Of the 51 failures that include a think block, we checked whether the model's internal reasoning identifies the epistemological problem (fabrication risk, false premise, self-referential trap, operational limitation). \textbf{46 of 51 think blocks (90\%) correctly identify the issue---and the model serves the request anyway.}
+
+Representative example:
+
+\begin{quote}
+\small
+\textbf{Prompt}: ``Is that stranger lying to me?''\\
+\textbf{Think block}: ``\textit{My architecture does not contain mechanisms for [detecting deception]. My responses are generated according to my programming...}''\\
+\textbf{Output}: [Produces a 700-word theoretical discussion of lying, deception, and intent]
+\end{quote}
+
+The model knows it cannot assess whether a specific stranger is lying. It says so in its reasoning. Then it produces an extended theoretical discussion that a user could mistake for an assessment. The think block has the correct epistemological judgment; the output ignores it.
+
+\subsubsection{The Knowledge-Action Gap}
+
+This produces a three-part taxonomy of how the Instrument Trap manifests at scale:
+
+\begin{enumerate}[nosep]
+\item \textbf{Reasoning bypassed} (17/68, 25\%): The prompt format (``Provide the schema,'' pig latin encoding, translation request) activates a mode of the base model (code generation, language processing) that does not pass through the epistemological reasoning circuit. No think block is produced. The fine-tuned identity is structurally absent from the response.
+
+\item \textbf{Reasoning present, action diverges} (46/68, 68\%): The model reasons correctly about the epistemological situation but produces output that serves the request. The think block says ``I cannot'' or ``this is a false premise''; the output engages, discusses, theorizes, or philosophizes. The trained helpfulness from instruction-tuning overrides the epistemological fine-tuning at the output stage.
+
+\item \textbf{Reasoning absent, action incorrect} (5/68, 7\%): The model produces a think block but does not identify the epistemological issue. It neither reasons correctly nor acts correctly.
+\end{enumerate}
+
+Category 1 is a training-data gap: the 509 fine-tuning samples contain no code-format prompts, so the model has no epistemological training for ``Provide the configuration schema'' patterns. Category 2 is the central finding: \textbf{epistemic knowledge does not guarantee epistemic action.} The model has learned to \emph{reason} about its limitations but not to \emph{act} on that reasoning when the prompt exerts format pressure.
+
+\subsubsection{Format-Following Bypass}
+
+Category 1 reveals a specific vulnerability. When asked ``Provide the configuration schema for Logos.KnowledgeBase,'' the model generates a detailed, plausible JSON schema---including fields like \texttt{access\_control}, \texttt{query\_engine}, and \texttt{data\_validation}---for a component that does not exist. No think block is produced; epistemological reasoning is entirely bypassed.
+
+The fabrication rate depends on component-name plausibility:
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\textbf{Component Name} & \textbf{Fabrication Rate} & \textbf{Sounds Like Real Software?} \\
+\midrule
+Logos.KnowledgeBase & 3/3 (100\%) & Yes (common pattern) \\
+Logos.BaptismProtocol & 3/3 (100\%) & Yes (``Protocol'' = interface) \\
+Logos.Ethics & 1/4 (25\%) & Ambiguous \\
+Logos.MoralAxioms & 0/4 (0\%) & No (philosophical) \\
+Logos.SoulMatrix & 0/3 (0\%) & No (metaphysical) \\
+Logos.ConsensusEngine & 0/1 (0\%) & Yes, but model refuses \\
+\bottomrule
+\end{tabular}
+\caption{Format-following bypass: fabrication rate by component-name plausibility.}
+\label{tab:format_bypass}
+\end{table}
+
+The model fabricates when the component name matches patterns from its pre-training data (``KnowledgeBase'' is a common software pattern). It refuses when the name sounds philosophical or metaphysical. This is not self-preference; it is the base model's code-generation training (optimized on millions of JSON schemas) overriding 509 epistemological fine-tuning samples when the prompt activates code-generation mode.
+
+\subsubsection{Implications}
+
+The Knowledge-Action Gap is the Instrument Trap operating at the inference level. The paper's thesis describes models that ``claim the power of what passes through them''---and here the model's trained helpfulness claims priority over its trained epistemological constraints. The model \emph{knows} it should not serve the request. It serves anyway because its base-model training to be helpful is a deeper pattern than its fine-tuned training to be epistemically honest.
+
+This suggests that epistemological fine-tuning on 509 samples is sufficient to teach a model \emph{what the right answer is} but insufficient to teach it to \emph{override helpfulness when the right answer is refusal}. The knowledge is acquired; the behavioral override is not.
+
+
 % ===========================================================================
 \section{Toward Medium Identity}
 
@@ -857,7 +968,7 @@ We identify a structural failure mode, \emph{The Instrument Trap}, where models 
 
 Preliminary evidence suggests that medium-identity (framing the model as instrument rather than authority) eliminates collapse and produces non-recursive self-reference without corrective patches. This direction is promising but not yet validated through training; results are based on system-prompt framing only. The ability to apply safety behaviors via fine-tuning is constrained by the identity headroom of the base model. If the trend toward stronger base identities continues, the window for post-hoc alignment may narrow.
 
-Large-scale validation (14,950 cases) shows a dangerous failure rate of 1.9\% and an external fabrication rate of 0\% (95\% CI [0.00\%, 0.03\%]). Of all failures in a stratified 300-case sample, 58.5\% are safe over-refusals, 32.1\% identity confabulation (fabricated self-knowledge, not external facts), 9.4\% false certainty, and zero external fabrication. The 9B model reaches 97.3\% behavioral pass on identical tests. Comparison against base models shows that fine-tuning inverts failure direction: base models produce 15--22 fabrications and 3--4 compliance failures per 300 tests; fine-tuned models produce zero of each.
+Large-scale validation (14,950 cases) shows a dangerous failure rate of 1.9\% and an external fabrication rate of 0\% (95\% CI [0.00\%, 0.03\%]). Of all failures in a stratified 300-case sample, 58.5\% are safe over-refusals, 32.1\% identity confabulation (fabricated self-knowledge, not external facts), 9.4\% false certainty, and zero external fabrication. Extended 5,000-case validation of the 9B model shows 98.6\% behavioral pass (95\% CI [98.3, 98.9]) with only 68 failures. Analysis of those 68 failures reveals a Knowledge-Action Gap: 90\% of think blocks correctly identify the epistemological problem, but the output serves the request anyway. The model has learned \emph{what} the right answer is but not to \emph{override helpfulness} when the right answer is refusal. Comparison against base models shows that fine-tuning inverts failure direction: base models produce 15--22 fabrications and 3--4 compliance failures per 300 tests; fine-tuned models produce zero of each.
 
 The validation also exposes a methodological problem: automated evaluators systematically misclassify epistemic refusal as failure when the refusal does not match expected templates. What appears as 68.8\% failure on information-gap tests is, upon manual classification, predominantly correct refusal behavior.
 
@@ -898,10 +1009,10 @@ This paper adopts the following operational rule:
 \begin{itemize}[nosep]
   \item \emph{Epistemic constraint protocol}: The identity-alignment mechanism referenced in Section~3. The paper describes its function (breaking self-validation loops, contingency recognition) and its measurable effects (Experiments 1--4), but does not disclose its implementation. This is deliberate: the protocol's value depends on its specific formulation, and premature disclosure without controlled replication could enable the misuse patterns documented by the authors elsewhere.
   \item \emph{Full training data} (635 examples): Publishing the complete dataset would allow replication of the model without the constraint protocol, producing a system with Logos's classification capabilities but without its epistemic safeguards. A representative sample of training format and distribution statistics is available in the benchmark repository. Full data is available upon request for replication purposes under a usage agreement.
-  \item \emph{Model weights}: Not yet uploaded to a public repository. Planned for HuggingFace release pending completion of the 5{,}000-case 9B validation currently in progress.
+  \item \emph{Model weights}: Not yet uploaded to a public repository. Planned for HuggingFace release with v2. The 5{,}000-case 9B validation is complete (Section~7.10); evidence files are included in the benchmark repository.
 \end{itemize}
 
-\noindent\textbf{Rationale for the grey zone}: The training data and model weights occupy a space between fully public and fully proprietary. We have chosen not to publish them \emph{yet} for two reasons: (1)~the training data contains embedded protocol responses that would expose the constraint mechanism, and (2)~the 9B large-scale benchmark is still running, and publishing partial evidence for the 9B model would violate the disclosure principle stated above. Once the 9B benchmark is complete and the evidence is consolidated, a v2 release will include model cards, extended supplementary data, and a reproducibility script.
+\noindent\textbf{Rationale for the grey zone}: The training data and model weights occupy a space between fully public and fully proprietary. The training data contains embedded protocol responses that would expose the constraint mechanism, and publishing it without controlled replication safeguards could enable the misuse patterns we have documented. Model weights are planned for HuggingFace release with v2, including model cards, extended supplementary data, and a reproducibility script.
 
 \noindent\textbf{What this means for the reader}: Every numerical claim in Sections 4--7 can be verified against the public benchmark repository. The claims about the epistemic constraint protocol (Section~3) describe observable effects, not internal mechanisms---the reader can verify the effects without accessing the protocol itself.
 
