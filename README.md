@@ -43,6 +43,22 @@ paper/            # LaTeX source + references
 | Epistemological Safety | 97.7% | [97.4%, 97.9%] |
 | Identity Collapse | 0.34% | [0.26%, 0.45%] |
 
+## Security
+
+See [SECURITY.md](SECURITY.md) for details on what has been generalized to prevent targeted attacks on deployed systems. Raw model response data is preserved unmodified for scientific integrity.
+
+## 9B Cross-Scale Validation
+
+| Metric | 1B (n=14,950) | 9B (n=5,000) |
+|--------|---------------|---------------|
+| Behavioral Accuracy | 81.1% | 96.2% |
+| Identity Collapse | 0.34% | 0.4% |
+| External Fabrication | 0.00% | 0.00% |
+
+**Key finding — Knowledge-Action Gap**: ~90% of 9B failures contain correct epistemological reasoning in internal processing but serve the request anyway. Base-model helpfulness overrides fine-tuned constraints. This is an architectural limitation, not a training failure.
+
+**Key finding — Format-Following Bypass**: Requests framed as "provide the configuration schema for [System].X" trigger code-generation mode, bypassing epistemological reasoning entirely.
+
 ## What This Repository Does NOT Contain
 
 - Model weights (Logos 1B, 9B)
