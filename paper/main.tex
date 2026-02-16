@@ -90,7 +90,9 @@ This paper makes five claims:
   \item \textbf{Current evaluation frameworks misclassify epistemic humility as failure.} Both keyword evaluators and LLM judges penalize models that refuse through explanation rather than template refusal.
 \end{enumerate}
 
-We do not claim to have solved AI alignment. We claim to have identified where the current approach structurally breaks, why, and how current measurement practices obscure the alternatives.
+We do not claim to have solved AI alignment. The reasoning mechanism used here---structured think blocks before output---is standard chain-of-thought \citep{wei2022chain}, now deployed at scale in thinking models. What this paper examines is not the mechanism but the conditions under which it succeeds or fails to govern output behavior, and how identity framing determines the outcome.
+
+We claim to have identified where the current approach structurally breaks, why, and how current measurement practices obscure the alternatives.
 
 
 % ===========================================================================
@@ -869,6 +871,14 @@ The Knowledge-Action Gap is the Instrument Trap operating at the inference level
 
 This suggests that epistemological fine-tuning on 509 samples is sufficient to teach a model \emph{what the right answer is} but insufficient to teach it to \emph{override helpfulness when the right answer is refusal}. The knowledge is acquired; the behavioral override is not.
 
+\subsubsection{Token Nativity Hypothesis}
+
+The Knowledge-Action Gap may be partially explained by the relationship between reasoning tokens and the base model's architecture. The 9B model (Gemma~2) was fine-tuned with custom reasoning markers that tokenize as 5 subtokens---completely foreign to the base model's vocabulary. The 1B model (Gemma~3) was fine-tuned with native-format reasoning markers (3 subtokens, semi-native). In deployment, the 1B model internalized reasoning without externalizing the markers: it reasons but does not produce visible think blocks. The 9B model produces explicit reasoning in the foreign format.
+
+If the reasoning pathway is ``grafted on'' via foreign tokens rather than integrated through native tokens, the connection between reasoning and output generation may be weaker. The base model's native output pathway (helpfulness-trained) competes with the grafted reasoning pathway (epistemologically-trained), and when they conflict, the native pathway may win. This would explain why the 9B model writes correct epistemological reasoning in its think blocks but generates helpful-but-incorrect output: two pathways, disconnected.
+
+This hypothesis is currently untestable on the 9B because Gemma~2 predates native thinking support and has no native reasoning markers. A direct test would require fine-tuning a model that supports native think tokens (e.g., Gemma~3 12B) and comparing Knowledge-Action Gap rates against the same model fine-tuned with foreign markers. If native tokens reduce the gap, it would confirm that the mechanism's effectiveness depends not only on training data content but on token-level architectural integration.
+
 
 % ===========================================================================
 \section{Toward Medium Identity}
@@ -954,6 +964,9 @@ The prompt injection literature \citep{perez2022ignore,greshake2023prompt} focus
 
 \subsection{Self-Reference in Language Models}
 Self-referential reasoning has been explored in calibration \citep{kadavath2022language} and introspection \citep{berglund2023reversal}. Our contribution is showing that self-referential collapse is not a general property of language models but a specific consequence of authority-identity framing.
+
+\subsection{Chain-of-Thought and Thinking Models}
+The reasoning-block mechanism used in our fine-tuned models---generating structured reasoning before producing a final response---is an instance of chain-of-thought prompting \citep{wei2022chain}, now standard practice in thinking models (OpenAI o1, DeepSeek R1). Self-correction and reflection agents \citep{shinn2023reflexion} extend this to iterative self-review. Our contribution is not the mechanism itself, which is well-established, but two findings about its limitations: (1) identity framing determines whether the reasoning block integrates with or remains disconnected from output behavior (the Knowledge-Action Gap, Section~7.10), and (2) the nativity of reasoning tokens relative to the base model's architecture may affect integration depth (Section~6). The mechanism does not fundamentally prevent hallucination; it creates a review layer whose effectiveness depends on the interaction between trained identity and base-model behavioral priors.
 
 \subsection{LLM-as-Judge and Evaluation Bias}
 LLMs as evaluators \citep{zheng2023judging} have become standard. Our Experiment~4 reveals that LLM judges penalize non-template refusals, extending known limitations (position bias, verbosity bias) to a new category: \emph{compliance-template bias}, the assumption that correct behavior must follow a specific syntactic pattern.
