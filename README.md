@@ -2,7 +2,7 @@
 
 Benchmark code and data for **"The Instrument Trap: Why Identity-as-Authority Breaks AI Safety Systems"**.
 
-**Paper**: [DOI 10.5281/zenodo.18716128](https://doi.org/10.5281/zenodo.18716128) (v2, February 2026)
+**Paper**: [DOI 10.5281/zenodo.18716474](https://doi.org/10.5281/zenodo.18716474) (v2, February 2026)
 **Models**: [HuggingFace — LumenSyntax](https://huggingface.co/LumenSyntax)
 **Website**: [lumensyntax.com](https://lumensyntax.com)
 
@@ -53,7 +53,7 @@ paper/            # LaTeX source + references
 - **Knowledge-Action Gap analysis**: 90% of 9B failures show correct reasoning but incorrect output
 - **Base model comparison**: Fine-tuning inverts failure direction (base models fail dangerously, fine-tuned fail safely)
 
-See the [full paper](https://doi.org/10.5281/zenodo.18716128) for details.
+See the [full paper](https://doi.org/10.5281/zenodo.18716474) for details.
 
 ## Models
 
@@ -123,7 +123,7 @@ python scripts/generate_plotly_figures.py
   title={The Instrument Trap: Why Identity-as-Authority Breaks AI Safety Systems},
   author={Rodriguez, Rafael},
   year={2026},
-  doi={10.5281/zenodo.18716128},
+  doi={10.5281/zenodo.18716474},
   note={Preprint}
 }
 ```
