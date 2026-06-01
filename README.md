@@ -132,4 +132,4 @@ python scripts/generate_plotly_figures.py
 
 Code: MIT
 Paper: CC BY-NC-ND 4.0
-Data: CC BY-NC 4.0
+Data: CC BY 4.0
